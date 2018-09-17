@@ -18,15 +18,15 @@ ________________________________________________________________________________
   
  b. Write a program to perform blobcoloring. The input to your code should be a binary image (0's, and 255's) and the output should be a list of objects or regions in the image. 
 	- region_analysis/cell_counting.py:
-    - blob_coloring: write your code for blob coloring here, takes as input a binary image and returns a list of objects or regions.
+    	- blob_coloring: write your code for blob coloring here, takes as input a binary image and returns a list of objects or regions.
 	- Describe your method and findings in the report.md fil
 	- Any output images or files must be saved to "output/cellct" folder
   
  c. Ignore cells smaller than 15 pixels in area and generate a report of the remaining cells (Cell Number, Area, Location)
 	- region_analysis/cell_counting.py:
-		compute_statistics: write your code for computing the statistics of each object/region, i.e area and location(centroid) here. Print out the statistics to stdout (using print function print one row for each region). 
-		Example: region number, area and centroid (Region: 1, Area: 1000, Centroid: (10,22))
-		mark_regions_image: write your code to create a final cell labeled image. The final image should include an astrix representing the centroid of each cell and two numbers, one representing its Cell Number and another its area. Please see sample output below.
+		- compute_statistics: write your code for computing the statistics of each object/region, i.e area and location(centroid) here. Print out the statistics to stdout (using print function print one row for each region). 
+		- Example: region number, area and centroid (Region: 1, Area: 1000, Centroid: (10,22))
+		- mark_regions_image: write your code to create a final cell labeled image. The final image should include an astrix representing the centroid of each cell and two numbers, one representing its Cell Number and another its area. Please see sample output below.
 		
 		
 ___________________________________________________________________________________________________________________
@@ -50,7 +50,7 @@ How to Run your code?
 
 
   - Usage: ./dip_hw2_region_analysis.py -i image-name
-       - image-name: name of the image    
+       - image-name: name of the image
   - example: ./dip_hw2_region_analysis.py -i cells.png
   - Please make sure your code runs when you run the above command from prompt
   - Describe your method and findings in the report.md file
@@ -65,8 +65,8 @@ If you do not like the structure, you are welcome to change the over all code, u
 
 The TA will only be able to see your results if these two conditions are met
 
-1. Region Counting     
-1. Compression 
-3. Report          
+1. Region Counting
+2. Compression 
+3. Report
 
 _______________________________________________________________________________________________________________________
