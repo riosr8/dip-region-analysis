@@ -10,7 +10,7 @@ class rle:
         """
 
 
-        return #rle_code
+        return np.zeros(100) #replace zeros with rle_code 
 
 
 
@@ -21,7 +21,7 @@ class rle:
         """
 
 
-        return  #image reconstructed from rle_Code
+        return  np.zeros((100,100), np.uint8) #replace zeros with image reconstructed from rle_Code
 
 
 
