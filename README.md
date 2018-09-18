@@ -61,7 +61,7 @@ How to Run your code?
   
 PS. Files not to be changed: requirements.txt and .circleci directory 
 
-
+----------------------
 If you do not like the structure, you are welcome to change the over all code, under two stipulations:
 
 1. the code has to run using command
@@ -80,16 +80,6 @@ The TA will only be able to see your results if these two conditions are met
 1. Region Counting - 12 Pts. 
 2. Resampling      - 6 Pts.
 3. Report          - 2 Pts
-
+		----------------
     Total          - 20 Pts.
-
-----------------------
-
-
-The TA will only be able to see your results if these two conditions are met
-
-1. Region Counting
-2. Compression 
-3. Report
-
 _______________________________________________________________________________________________________________________
