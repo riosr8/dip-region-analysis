@@ -5,7 +5,7 @@ Due: Tue 09/27/18 11:59 PM
 
 
 __________________________________________________________________________________________________________________
-1. (12 Pts)Region Counting:
+1. (12 Pts) Region Counting:
 
  	a. (3 Pts) Write a program to binarize a gray-level image based on the assumption that the image has a bimodal histogram.  You are to implement the method to estimate the optimal threshold required to binarize the image. The threshold is to be computed using the average of the expectation of the two distributions. Your code should report both the binarized image and the optimal threshold value. Also assume that foreground objects are darker than background objects in the input gray-level image.
 	- Starter code available in directory region_analysis/
