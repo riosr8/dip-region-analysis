@@ -80,6 +80,8 @@ The TA will only be able to see your results if these two conditions are met
 1. Region Counting - 12 Pts. 
 2. Resampling      - 6 Pts.
 3. Report          - 2 Pts
+
 		----------------
+		
     Total          - 20 Pts.
 _______________________________________________________________________________________________________________________
