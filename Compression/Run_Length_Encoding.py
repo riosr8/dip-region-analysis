@@ -5,8 +5,9 @@ class rle:
     def encode_image(self,binary_image):
         """
         Compress the image
-        :param binary_image:
-        :return:
+        takes as input:
+        image: binary_image
+        returns run length code
         """
 
 
@@ -17,7 +18,10 @@ class rle:
     def decode_image(self, rle_code, height , width):
         """
         Get original image from the rle_code
+        takes as input:
+        rle_code: the run length code to be decoded
         Height, width: height and width of the original image
+        returns decoded binary image
         """
 
 
