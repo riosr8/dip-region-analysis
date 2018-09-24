@@ -9,7 +9,8 @@ class binary_image:
         returns a histogram"""
 
         hist = [0]*256
-
+        for index, value in np.ndenumerate(image):
+            hist[value] += 1
 
         return hist
 
@@ -19,10 +20,36 @@ class binary_image:
         hist: a bimodal histogram
         returns: an optimal threshold value"""
 
-        threshold = 0
+        k = len(hist) - 1
+        t = int(k/2)
+        prev_means = []
+        first = True
+        while True:
 
+            sum1 = sum(hist[:t])
+            sum2 = sum(hist[t:])
 
-        return threshold
+            if len(prev_means) != 2:
+                u1 = np.average([i + 1 for i in range(0, t)], weights=[i / sum1 for i in hist][:t])
+                u2 = np.average([i + 1 for i in range(t, len(hist))], weights=[i / sum2 for i in hist][t:])
+                prev_means.append(u1)
+                prev_means.append(u2)
+            else:
+                u1 = np.average([i + 1 for i in range(0, t)], weights=[i / sum1 for i in hist][:t])
+                u2 = np.average([i + 1 for i in range(t, len(hist))], weights=[i / sum2 for i in hist][t:])
+
+            t = int((u1 + u2) / 2)
+
+            if not first:
+                delta_u1 = u1 - prev_means[0]
+                delta_u2 = u2 - prev_means[1]
+                prev_means[0] = u1
+                prev_means[1] = u2
+                if delta_u1 != 0 and delta_u2 != 0:
+                    break
+            first = False
+
+        return t
 
     def binarize(self, image):
         """Comptues the binary image of the the input image based on histogram analysis and thresholding
@@ -31,6 +58,10 @@ class binary_image:
         returns: a binary image"""
 
         bin_img = image.copy()
+        hist = self.compute_histogram(bin_img)
+        t = self.find_optimal_threshold(hist)
+        for index, value in np.ndenumerate(image):
+            bin_img[index[0]][index[1]] = 255 if value < t else 0
 
         return bin_img
 
