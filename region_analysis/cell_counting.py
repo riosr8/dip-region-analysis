@@ -16,8 +16,6 @@ class cell_counting:
 
         for (i, j), val in np.ndenumerate(image):
             if val == 255:
-                if i == 10 and j == 193:
-                    print(i)
                 if i - 1 >= 0 and j - 1 >= 0:
                     if image[i, j - 1] == 0 and image[i - 1, j] == 0:
                         r[i, j] = region_num_counter
