@@ -47,8 +47,8 @@ class rle:
             pixel_value = 255 if pixel_value == 0 else 0
 
         image = np.asarray(image)
-        image = image.reshape(height, width)
-        return image
+
+        return image.reshape(height, width)
 
 
 
