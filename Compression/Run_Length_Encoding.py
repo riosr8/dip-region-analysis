@@ -1,5 +1,6 @@
 import numpy as np
 
+
 class rle:
 
     def encode_image(self,binary_image):
@@ -10,8 +11,21 @@ class rle:
         returns run length code
         """
 
+        pixels = binary_image.flatten()
+        rle_code = [pixels[0]]
+        count = 1
 
-        return np.zeros(100) #replace zeros with rle_code 
+        for i in range(1, len(pixels)):
+
+            if pixels[i] == pixels[i-1]:
+                count += 1
+            else:
+                rle_code.append(count)
+                count = 1
+
+        rle_code.append(count)
+
+        return rle_code
 
 
 
@@ -23,9 +37,18 @@ class rle:
         Height, width: height and width of the original image
         returns decoded binary image
         """
+        # s = rle_code.split()
+        pixel_value = rle_code[0]
+        run_counts = rle_code[1:]
+        image = []
+        for i in run_counts:
+            p = [pixel_value]*i
+            image += p
+            pixel_value = 255 if pixel_value == 0 else 0
 
-
-        return  np.zeros((100,100), np.uint8) #replace zeros with image reconstructed from rle_Code
+        image = np.asarray(image)
+        image = image.reshape(height, width)
+        return image
 
 
 
