@@ -60,7 +60,7 @@ class cell_counting:
 
         return regions
 
-    def compute_statistics(self, regions):
+    def compute_statistics(self, region):
         """Compute cell statistics area and location
         takes as input
         region: a list of pixels in a region
@@ -70,7 +70,7 @@ class cell_counting:
         # <region number>: <location or center>, <area>
         # print(stats)
 
-        reduced_regions = {k: v for k, v in regions.items() if len(v) >= 15}
+        reduced_regions = {k: v for k, v in region.items() if len(v) >= 15}
 
         stats = {}
         for region, points in reduced_regions.items():
@@ -89,6 +89,7 @@ class cell_counting:
         returns: image marked with center and area"""
 
         for region, data in stats.items():
-            cv2.putText(image, '*' + str(region) + ',' + str(data[0]) + ',' + str(data[1]), data[0], cv2.FONT_HERSHEY_SIMPLEX, 0.25, 100)
+            cv2.putText(image, '*', data[0], cv2.FONT_HERSHEY_SIMPLEX, 0.2, (255, 255, 255))
+            cv2.putText(image, str(data[1]), data[0], cv2.FONT_HERSHEY_SIMPLEX, 0.25, (255, 255, 255))
 
         return image
