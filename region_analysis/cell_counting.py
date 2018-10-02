@@ -73,9 +73,10 @@ class cell_counting:
         reduced_regions = {k: v for k, v in region.items() if len(v) >= 15}
 
         stats = {}
+
         for region, points in reduced_regions.items():
-            centroid = np.array(points).mean(axis=0)
-            centroid = (centroid[0].round(), centroid[1].round())
+            x, y = zip(*points)
+            centroid = (max(x) + min(x)) / 2., (max(y) + min(y)) / 2.
             stats[region] = ((int(centroid[0]), int(centroid[1])), len(points))
             print(str(region) + ': ' + '<center: ' + str((centroid[0], centroid[1])) + '>, <area: ' + str(len(points)) + ' pixels>')
 
@@ -89,7 +90,7 @@ class cell_counting:
         returns: image marked with center and area"""
 
         for region, data in stats.items():
-            cv2.putText(image, '*', data[0], cv2.FONT_HERSHEY_SIMPLEX, 0.2, (255, 255, 255))
-            cv2.putText(image, str(data[1]), data[0], cv2.FONT_HERSHEY_SIMPLEX, 0.25, (255, 255, 255))
+            cv2.putText(image, '*', (data[0][1], data[0][0]), cv2.FONT_HERSHEY_SIMPLEX, 0.3, (0, 0, 0))
+            cv2.putText(image, str(data[1]), (data[0][1], data[0][0]), cv2.FONT_HERSHEY_SIMPLEX, 0.25, (0, 0, 0))
 
         return image
