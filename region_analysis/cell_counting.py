@@ -75,10 +75,11 @@ class cell_counting:
         stats = {}
 
         for region, points in reduced_regions.items():
-            x, y = zip(*points)
-            centroid = (max(x) + min(x)) / 2., (max(y) + min(y)) / 2.
+            x = [p[0] for p in points]
+            y = [p[1] for p in points]
+            centroid = ((sum(x) / len(points)), (sum(y) / len(points)))
             stats[region] = ((int(centroid[0]), int(centroid[1])), len(points))
-            print(str(region) + ': ' + '<center: ' + str((centroid[0], centroid[1])) + '>, <area: ' + str(len(points)) + ' pixels>')
+            print('{0}: <center: ({1:.2f}, {2:.2f})>, <area: {3} pixels>'.format(region, centroid[0], centroid[1], len(points)))
 
         return stats
 
@@ -90,7 +91,7 @@ class cell_counting:
         returns: image marked with center and area"""
 
         for region, data in stats.items():
-            cv2.putText(image, '*', (data[0][1], data[0][0]), cv2.FONT_HERSHEY_SIMPLEX, 0.3, (0, 0, 0))
-            cv2.putText(image, str(data[1]), (data[0][1], data[0][0]), cv2.FONT_HERSHEY_SIMPLEX, 0.25, (0, 0, 0))
+            cv2.putText(image, '*', (data[0][1], data[0][0]), cv2.FONT_HERSHEY_SIMPLEX, 0.20, (0, 0, 0))
+            cv2.putText(image, str(data[1]), (data[0][1], data[0][0]), cv2.FONT_HERSHEY_SIMPLEX, 0.2, (0, 0, 0))
 
         return image
